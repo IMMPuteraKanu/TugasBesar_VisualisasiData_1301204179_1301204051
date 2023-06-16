@@ -1,5 +1,4 @@
 import pandas as pd
-import streamlit as st
 from bokeh.plotting import figure, curdoc
 from bokeh.models import HoverTool, ColumnDataSource
 from bokeh.layouts import widgetbox, row, column
@@ -10,14 +9,14 @@ df = pd.read_csv("https://raw.githubusercontent.com/IMMPuteraKanu/Visdat/main/In
 
 source = ColumnDataSource(data=df)
 
-plot = st.figure(title='Dataset Visualization', x_axis_label='YEAR', y_axis_label='SALARY', plot_height=400, plot_width=600)
-line = st.plot.line(x='YEAR', y='SALARY', source=source, line_width=2)
+plot = figure(title='Dataset Visualization', x_axis_label='YEAR', y_axis_label='SALARY', plot_height=400, plot_width=600)
+line = plot.line(x='YEAR', y='SALARY', source=source, line_width=2)
 
 
 min_ = df['YEAR'].min()
 max_= df['YEAR'].max()
 
-select_region = Select(title="REGION", value=df['REGION'].unique()[0], options=df['REGION'].unique().tolist())
+select_region = st.Select(title="REGION", value=df['REGION'].unique()[0], options=df['REGION'].unique().tolist())
 
 slider1 = Slider(title="From", start=min_, end=max_, value=min_, step=1)
 slider2 = Slider(title="To", start=min_, end=max_, value=max_, step=1)
