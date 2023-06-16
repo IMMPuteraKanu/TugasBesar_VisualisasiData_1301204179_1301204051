@@ -33,7 +33,7 @@ chart = alt.Chart(combined_data).mark_line().encode(
     title='Comparison of Data for {} and {} - Year {} to {}'.format(selected_area1, selected_area2, start_year, end_year)
 )
 
-# Display the chart
+# Grafik
 st.altair_chart(chart)
 
 # Filter the shapefile for the selected regions
