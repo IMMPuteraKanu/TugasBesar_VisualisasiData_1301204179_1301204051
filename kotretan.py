@@ -5,7 +5,7 @@ from bokeh.layouts import widgetbox, row, column
 from bokeh.models import Select, Slider
 
 # Load the dataset
-df = pd.read_csv("IndonesianSalary.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/IMMPuteraKanu/Visdat/main/IndonesianSalary.csv")
 
 source = ColumnDataSource(data=df)
 
