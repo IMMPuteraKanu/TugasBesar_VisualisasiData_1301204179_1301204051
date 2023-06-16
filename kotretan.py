@@ -1,13 +1,17 @@
 import pandas as pd
 import streamlit as st
 import altair as alt
-import geopandas as gpf
+import geopandas as gpd
 import folium
 
-# Dataset
+# Load the dataset
 df = pd.read_csv("https://raw.githubusercontent.com/IMMPuteraKanu/Visdat/main/IndonesianSalary.csv")
 
-# Buat Button Untuk Dataset
+# Load the shapefile for Indonesia's regions
+shapefile_path = "path/to/shapefile/Indonesia_regions.shp"
+gdf = gpd.read_file(shapefile_path)
+
+# Set up Streamlit components
 st.title('Dataset Visualization')
 st.subheader('Select Options')
 selected_area1 = st.selectbox("Region 1", df['REGION'].unique())
@@ -35,7 +39,7 @@ chart = alt.Chart(combined_data).mark_line().encode(
     title='Comparison of Data for {} and {} - Year {} to {}'.format(selected_area1, selected_area2, start_year, end_year)
 )
 
-# Grafik
+# Display the chart
 st.altair_chart(chart)
 
 # Filter the shapefile for the selected regions
