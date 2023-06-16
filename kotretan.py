@@ -1,5 +1,4 @@
 import pandas as pd
-import streamlit as st
 from bokeh.plotting import figure, curdoc
 from bokeh.models import HoverTool, ColumnDataSource
 from bokeh.layouts import widgetbox, row, column
@@ -11,7 +10,7 @@ df = pd.read_csv("https://raw.githubusercontent.com/IMMPuteraKanu/Visdat/main/In
 source = ColumnDataSource(data=df)
 
 plot = figure(title='Dataset Visualization', x_axis_label='YEAR', y_axis_label='SALARY', plot_height=400, plot_width=600)
-line = st.line_chart(x='YEAR', y='SALARY', source=source, line_width=2)
+line = line_chart(x='YEAR', y='SALARY', source=source, line_width=2)
 
 
 min_ = df['YEAR'].min()
