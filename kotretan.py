@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 import altair as alt
-import geopandas as gpd
+import geopandas as gpf
 import folium
 
 # Dataset
