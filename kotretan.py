@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import altair as alt
 
 # Load the dataset
 df = pd.read_csv("https://raw.githubusercontent.com/IMMPuteraKanu/Visdat/main/IndonesianSalary.csv")
@@ -18,7 +19,19 @@ filtered_data1 = df[(df['REGION'] == selected_area1) & (df['YEAR'] >= start_year
 # Filter the data for region 2
 filtered_data2 = df[(df['REGION'] == selected_area2) & (df['YEAR'] >= start_year) & (df['YEAR'] <= end_year)]
 
-# Update the visualization
-st.subheader('Comparison of Data for {} and {} - Year {} to {}'.format(selected_area1, selected_area2, start_year, end_year))
-st.line_chart(filtered_data1[['YEAR', 'SALARY']])
-st.line_chart(filtered_data2[['YEAR', 'SALARY']])
+# Combine the data for both regions
+combined_data = pd.concat([filtered_data1, filtered_data2])
+
+# Create the visualization
+chart = alt.Chart(combined_data).mark_line().encode(
+    x='YEAR',
+    y='SALARY',
+    color='REGION'
+).properties(
+    width=600,
+    height=400,
+    title='Comparison of Data for {} and {} - Year {} to {}'.format(selected_area1, selected_area2, start_year, end_year)
+)
+
+# Display the chart
+st.altair_chart(chart)
