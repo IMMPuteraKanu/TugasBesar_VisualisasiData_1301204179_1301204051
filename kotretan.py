@@ -35,3 +35,16 @@ chart = alt.Chart(combined_data).mark_line().encode(
 
 # Display the chart
 st.altair_chart(chart)
+
+# Filter the shapefile for the selected regions
+filtered_gdf = gdf[gdf['REGION'].isin([selected_area1, selected_area2])]
+
+# Create a folium map
+m = folium.Map(location=[-2, 118], zoom_start=5)
+
+# Add the shapefile to the map
+folium.GeoJson(filtered_gdf).add_to(m)
+
+# Display the map
+st.subheader('Selected Regions on Map:')
+st.write(m._repr_html_(), unsafe_allow_html=True)
