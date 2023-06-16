@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 import altair as alt
+import geopandas as gpd
+import folium
 
 # Load the dataset
 df = pd.read_csv("https://raw.githubusercontent.com/IMMPuteraKanu/Visdat/main/IndonesianSalary.csv")
