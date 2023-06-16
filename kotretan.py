@@ -6,7 +6,8 @@ import altair as alt
 df = pd.read_csv("https://raw.githubusercontent.com/IMMPuteraKanu/Visdat/main/IndonesianSalary.csv")
 
 # Membuat Button Dengan Streamit
-st.title('Dataset Visualization 1301204179 - ')
+st.title('Dataset Visualization')
+st.write("I Made Mahadika Putera Kanu - 1301204179 and Muhammad Daffa’ Ibrahim - 1301204051")
 st.subheader('Select Options')
 selected_area1 = st.selectbox("Region 1", df['REGION'].unique())
 selected_area2 = st.selectbox("Region 2", df['REGION'].unique())
