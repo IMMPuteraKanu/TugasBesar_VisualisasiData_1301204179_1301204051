@@ -4,10 +4,10 @@ import altair as alt
 import geopandas as gpd
 import folium
 
-# Load the dataset
+# Dataset
 df = pd.read_csv("https://raw.githubusercontent.com/IMMPuteraKanu/Visdat/main/IndonesianSalary.csv")
 
-# Set up Streamlit components
+# Buat Button Untuk Dataset
 st.title('Dataset Visualization')
 st.subheader('Select Options')
 selected_area1 = st.selectbox("Region 1", df['REGION'].unique())
